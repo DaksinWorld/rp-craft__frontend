@@ -2,12 +2,30 @@
 @import '../node_modules/tailwindcss/components.css';
 @import '../node_modules/tailwindcss/utilities.css';
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Recursive:wght@800&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --text-input-primary: #D0D2D3;
+  --dark-gray: #181A20;
+  --background-primary: #0B0E11;
+  --green-theme-color: #9FCE3A;
+  --light-blue: #51657c;
+  --light-white: #BEC7E2;
+  --gray: #E1E1E1;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--background-primary);
 }
 
 a {
@@ -18,11 +36,42 @@ a {
 * {
   box-sizing: border-box;
   margin: 0;
+  color: var(--text-input-primary);
 }
 
 .container {
   margin: 0 auto;
-  max-width: 1600px;
+  max-width: 1650px;
+}
+
+.leftAnimation {
+  animation: .8s ease-in-out 1 slideInLeft-enter;
+}
+
+.rightAnimation {
+  animation: .8s ease-in-out 1 slideInRight-enter;
+}
+
+@keyframes slideInLeft-enter {
+  from {
+    transform: translateX(-60px);
+    opacity: 0.1;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight-enter {
+  from {
+    transform: translateX(60px);
+    opacity: 0.1;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 1660px){
@@ -33,7 +82,7 @@ a {
 
 @media screen and (max-width: 1260px){
   .container {
-    max-width: 768px;
+    max-width: 800px;
   }
 }
 

@@ -1,0 +1,29 @@
+.main {
+    background: var(--dark-gray);
+    width: 100%;
+    border-radius: 50px 50px 0 0;
+    padding-bottom: 50px;
+}
+
+.main__subtitle {
+    color: var(--light-blue);
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.step__text {
+    max-width: 330px;
+    font-weight: 600;
+    margin-left: 25px;
+    font-size: 24px;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+@media(max-width: 1024px) {
+    .main__container {
+        flex-direction: column;
+    }
+
+    .main_title {
+        font-size: 120px;
+    }
+}

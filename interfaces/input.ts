@@ -12,3 +12,24 @@ export interface IRegister {
     bscWallet: string;
     balance: number;
 }
+
+export interface ILogin {
+    email: string;
+    bscWallet: string;
+    password: string;
+}
+
+export interface IUserData {
+    _id: string;
+    name: string;
+    email: string;
+    balance: number;
+    bscWallet: string;
+    passwordHash: string;
+}
+
+export interface ITransferData {
+    pickedUser: IUserData;
+    inputValue: string;
+    amount: number;
+}

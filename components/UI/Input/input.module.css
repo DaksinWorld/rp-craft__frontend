@@ -1,0 +1,23 @@
+.input {
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background: #0B0E11;
+    box-shadow: inset -6px -6px 10px rgba(255, 255, 255, 0.25), inset 6px 6px 10px #191D20;
+    border-radius: 27px;
+
+    color: var(--text-input-primary);
+
+    outline: none;
+
+    transition: all .2s ease-in;
+
+    margin-bottom: 30px;
+
+    width: 100%;
+}
+
+.input:focus {
+    box-shadow: inset -4px -4px 5px rgba(255, 255, 255, 0.25), inset 4px 4px 5px #191D20;
+}

@@ -1,0 +1,41 @@
+.nav {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: rgba(24,26,32, 0.8);
+    z-index: 2;
+    padding: 15px 0;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.nav__element {
+    color: var(--light-blue);
+    margin: 0 17px;
+    transition: opacity .2s ease-in-out;
+}
+
+.nav__element:hover {
+    opacity: .9;
+}
+
+.nav__element:nth-child(2n) {
+    color: var(--green-theme-color);
+}
+
+.nav__element_button {
+    background-color: var(--green-theme-color);
+    padding: 15px 45px;
+    border-radius: 30px;
+    color: var(--light-blue);
+    transition: all .3s ease-in-out;
+}
+
+.nav__element_button:hover {
+    box-shadow: inset 0px 0px 30px 10px rgba(0, 0, 0, 0.27);
+    -webkit-box-shadow: inset 0px 0px 30px 10px rgba(0, 0, 0, 0.27);
+    -moz-box-shadow: inset 0px 0px 30px 10px rgba(0, 0, 0, 0.27);
+}

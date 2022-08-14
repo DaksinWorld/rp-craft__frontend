@@ -1,8 +1,9 @@
-import {IRegister} from "../../interfaces/input";
+import {ILogin, IRegister} from "../../interfaces/input";
 
 
 export interface MetamaskProps {
-    register: IRegister,
-    setRegister: any,
+    login?: ILogin | IRegister,
+    setLogin?: any,
+
     setIsModalOpened: any
 }

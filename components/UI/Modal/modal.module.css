@@ -16,7 +16,9 @@
     justify-content: space-between;
     padding: 20px;
     border-radius: 16px;
-    background-color: white;
+    color: var(--text-input-primary);
+    background-color: var(--background-primary);
     min-width: 400px;
     min-height: 400px;
+    box-shadow: 0 0 20px 15px rgba(0,0,0,0.3);
 }

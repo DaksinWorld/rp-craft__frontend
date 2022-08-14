@@ -1,5 +1,4 @@
 import React, {FormEvent, memo, useState} from 'react';
-import {useMoralis} from "react-moralis";
 import {IHandleInput, IRegister} from "../../interfaces/input";
 import Hr from "../UI/Hr/hr";
 import Input from "../UI/Input/input";
@@ -11,7 +10,7 @@ import {useFetching} from "../../hook/useFetch";
 import {RequestService} from "../../utils/RequestService";
 import {useRouter} from "next/router";
 
-const RegisterSection = () => {
+const RegisterSection = ({changeSection}: any) => {
     const [register, setRegister] = useState<IRegister>({name: '', email: '', password: '', bscWallet: '', balance: 0})
     const [isModalOpened, setIsModalOpened] = useState<boolean>(false)
     const [step, setStep] = useState<number>(1)
@@ -21,11 +20,10 @@ const RegisterSection = () => {
     /*Register user*/
     const [fetchRegister, isLoading, error] = useFetching<any>(async () => {
         const res = await RequestService.register(register)
-        if (res.name !== 'AxiosError') {
+        if (!res.error) {
             localStorage.setItem('access_token', res)
             router.push('/profile')
         }
-        console.log(res)
     })
 
     const handleInput = ({e, type}: IHandleInput) => {
@@ -92,7 +90,6 @@ const RegisterSection = () => {
                             </div>
                             <Button onClick={() => {
                                 handleForm()
-                                setIsModalOpened(false)
                             }} type='button' color={'blue'} text={'Done'}
                                     disabled={!register.password && !register.email}/>
                         </>)
@@ -102,70 +99,24 @@ const RegisterSection = () => {
             <section className="h-screen">
                 <div className="px-6 h-full text-gray-800">
                     <div
-                        className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
+                        className="flex xl:justify-center justify-center items-center flex-wrap h-full g-6"
                     >
-                        <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
-                            <div className="flex flex-row items-center justify-center lg:justify-start">
-                                <h3 className="text-2xl mb-0 mr-4 font-semibold">Sign Up</h3>
+                        <div className="md:mb-0 flex flex-col items-center">
+                            <div className="mb-7 flex flex-row items-center justify-center lg:justify-start">
+                                <h3 className="text-2xl text-center mb-0 font-semibold">Sign Up</h3>
                             </div>
-                            <Hr/>
                             <div>
-                                <MetamaskButton register={register} setIsModalOpened={setIsModalOpened}
-                                                setRegister={setRegister}/>
+                                <MetamaskButton login={register} setIsModalOpened={setIsModalOpened}
+                                                setLogin={setRegister}/>
                             </div>
                             <form>
-                                <hr className="my-5"/>
-
-                                <div className="mb-6">
-                                    <Input
-                                        onChange={(e) => handleInput({e, type: 'name'})}
-                                        type="text"
-                                        id="exampleFormControlInput2"
-                                        placeholder="Name"
-                                    />
-                                </div>
-
-                                <div className="mb-6">
-                                    <Input
-                                        onChange={(e) => handleInput({e, type: 'email'})}
-                                        type="text"
-                                        id="exampleFormControlInput2"
-                                        placeholder="Email address"
-                                    />
-                                </div>
-
-                                <div className="mb-6">
-                                    <Input
-                                        onChange={(e) => handleInput({e, type: 'password'})}
-                                        type="password"
-                                        id="exampleFormControlInput2"
-                                        placeholder="Password"
-                                    />
-                                </div>
-
-                                <div className="flex justify-between items-center mb-6">
-                                    <div className="form-group form-check">
-                                        <Input
-                                            type="checkbox"
-                                            id="exampleCheck2"
-                                        />
-                                        <label className="form-check-label inline-block text-gray-800"
-                                               htmlFor="exampleCheck2"
-                                        >Remember me</label
-                                        >
-                                    </div>
-                                    <a href="#" className="text-gray-800">Forgot password?</a>
-                                </div>
-
                                 <div className="lg:text-left">
-                                    <Button type='submit' color={'blue'} text={'Submit'}/>
                                     <p className="text-sm font-semibold mt-2 pt-1 mb-0">
                                         Already have an account?
                                         <a
                                             href="#"
-                                            className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
-                                        >Login</a
-                                        >
+                                            className="text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-200 ease-in-out"
+                                        >Login</a>
                                     </p>
                                 </div>
                             </form>
